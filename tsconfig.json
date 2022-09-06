@@ -8,5 +8,11 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "./dist", "spec"]
+  "exclude": [
+    "node_modules",
+    "./dist",
+    "spec",
+    "typings/browser.d.ts",
+    "typings/browser"
+  ]
 }

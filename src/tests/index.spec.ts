@@ -1,7 +1,7 @@
 import Request from 'request';
 
 describe('Server running', () => {
-  var server: any;
+  let server: { close: () => void };
   beforeAll(() => {
     server = require('../index');
   });
@@ -11,11 +11,13 @@ describe('Server running', () => {
   });
 
   describe('GET', () => {
-    var data: any = {};
+    const data = {
+      status: 0
+    };
     beforeAll((done) => {
       Request.get(
         'http://localhost:8000/api/image?filename=santamonica&width=400&height=200',
-        (error: any, response: any, body: any) => {
+        (_, response) => {
           data.status = response.statusCode;
           done();
         }

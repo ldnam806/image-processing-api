@@ -5,9 +5,10 @@
   "scripts": {
     "build": "npx tsc",
     "jasmine": "jasmine",
+    "lint": "eslint --ext .js,.ts .",
     "test": "npm run build && npm run jasmine",
     "start": "node dist/index.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/index.js\"",
     "prettier-format": "prettier --config .prettierrc \"./src/**/*.ts\" --write"
   },
   "keywords": [],
@@ -26,7 +27,10 @@
     "@types/node": "^18.7.5",
     "@types/request": "^2.48.8",
     "@types/sharp": "^0.30.5",
+    "@typescript-eslint/eslint-plugin": "^5.36.0",
+    "@typescript-eslint/parser": "^5.36.0",
     "concurrently": "^7.3.0",
+    "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^2.0.19",

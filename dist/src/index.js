@@ -9,8 +9,12 @@ const api_1 = __importDefault(require("./routes/api"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
 app.use('/api', api_1.default);
-var server = app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
 module.exports = server;
