@@ -28,3 +28,12 @@ export const isFileExist = async (filename: string): Promise<boolean> => {
   const names = files.map((file) => file.split('.')[0]);
   return names.includes(filename);
 };
+
+export const isFileExistInThumbs = async (
+  filename: string
+): Promise<boolean> => {
+  const files = await readdirSync('./thumbs');
+  // remove tail .jpg or .png
+  const names = files.map((file) => file.split('.')[0]);
+  return names.includes(filename);
+};

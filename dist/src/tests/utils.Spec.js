@@ -8,9 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../../utils");
-describe('isFileExist', () => {
+const sharp_1 = __importDefault(require("sharp"));
+const path_1 = __importDefault(require("path"));
+describe('Exist file', () => {
     it('Is not exist file', () => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield (0, utils_1.isFileExist)('noexistfile');
         expect(result).toBe(false);
@@ -18,5 +23,13 @@ describe('isFileExist', () => {
     it('Is exist file', () => __awaiter(void 0, void 0, void 0, function* () {
         const result = yield (0, utils_1.isFileExist)('santamonica');
         expect(result).toBe(true);
+    }));
+});
+describe('RESIZE', () => {
+    it('Get a sharp file.', () => __awaiter(void 0, void 0, void 0, function* () {
+        const transform = (0, sharp_1.default)(path_1.default.join('images/santamonica.jpg'));
+        expect(() => __awaiter(void 0, void 0, void 0, function* () {
+            yield transform;
+        })).not.toThrow();
     }));
 });

@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isFileExist = exports.resize = void 0;
+exports.isFileExistInThumbs = exports.isFileExist = exports.resize = void 0;
 const sharp_1 = __importDefault(require("sharp"));
 const fs_1 = require("fs");
 const resize = (fileSource, width, height) => __awaiter(void 0, void 0, void 0, function* () {
@@ -40,3 +40,10 @@ const isFileExist = (filename) => __awaiter(void 0, void 0, void 0, function* ()
     return names.includes(filename);
 });
 exports.isFileExist = isFileExist;
+const isFileExistInThumbs = (filename) => __awaiter(void 0, void 0, void 0, function* () {
+    const files = yield (0, fs_1.readdirSync)('./thumbs');
+    // remove tail .jpg or .png
+    const names = files.map((file) => file.split('.')[0]);
+    return names.includes(filename);
+});
+exports.isFileExistInThumbs = isFileExistInThumbs;

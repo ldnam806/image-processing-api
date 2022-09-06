@@ -1,6 +1,6 @@
 import Request from 'request';
 
-describe('Server running', () => {
+describe('SERVER RUNNING', () => {
   let server: { close: () => void };
   beforeAll(() => {
     server = require('../index');
